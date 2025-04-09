@@ -4,11 +4,13 @@ package com.example.customermanagement.demo.controller;
 
 import com.example.customermanagement.demo.entity.CustomerEntity;
 import com.example.customermanagement.demo.repository.CustomerRepo;
-import com.example.customermanagement.demo.valueobject.CustomerPostResponse;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Collections;
+import java.util.List;
 
 @RestController
 public class CustomerController {
@@ -33,5 +35,9 @@ public class CustomerController {
     @GetMapping("/getCustomer/{socialSecurityNumber}")
     public  ResponseEntity<CustomerEntity> getCustomer(@PathVariable String socialSecurityNumber) {
         return ResponseEntity.ok(customerRepo.findBySocialSecurityNumber(socialSecurityNumber)) ;
+    }
+    @GetMapping("/getCustomers")
+    public  ResponseEntity<List<CustomerEntity>> getCustomers() {
+        return ResponseEntity.ok(customerRepo.findAll()) ;
     }
 }

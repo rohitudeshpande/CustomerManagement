@@ -24,7 +24,11 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ResponseEntity<Map<String,String>> handleDataIntegrityViolationExceptions(DataIntegrityViolationException ex){
         String message = "Database Error:" + ex.getMostSpecificCause().getMessage();
-        System.err.println(message);
-        throw ex;
+        Map<String, String> response = new HashMap<>();
+        response.put("error", message);
+        System.err.println("[WARN] DataIntegrityViolation: " + message);
+        return ResponseEntity
+                .status(HttpStatus.CONFLICT)
+                .body(response);
     }
 }
