@@ -1,11 +1,16 @@
 # CustomerManagement
-This application manages customer database in in-memory database
 
-# APIs offered
-**1. /addCustomer**  
-`POST` API that adds a customer to the database.
+This Spring Boot application manages customer records in an in-memory H2 database.
 
-**Payload**:
+---
+
+## 📌 APIs Offered
+
+### 1. `POST /addCustomer`
+
+Adds a new customer to the database.
+
+**Request Payload**:
 ```json
 {
   "name": "Rohit",
@@ -14,16 +19,29 @@ This application manages customer database in in-memory database
   "dateOfBirth": "14-09-1988",
   "socialSecurityNumber": "abcd12354"
 }
-Authentication:
-   Follows basic authentication. To use it, configure credentials in application.properties.
-   Only Admin user has privilege to add a customer.
+```
 
-**2. /getCustomer/{socialSecurityNumber}**
-   Fethches the Customer by social security number.
-   Both admin user and readonly user have access.
+**Authentication**:
+- Uses **Basic Authentication**.
+- Credentials should be configured in `application.properties`.
+- Only users with the **admin** role can access this endpoint.
 
-**3. /getCustomerById/{id}**
-   Fethches the Customer by customer id.
-   Both admin user and readonly user have access.
+---
 
+### 2. `GET /getCustomer/{socialSecurityNumber}`
 
+Fetches customer details using their Social Security Number.
+
+**Access**:
+- Available to both **admin** and **readonly** users.
+
+---
+
+### 3. `GET /getCustomerById/{id}`
+
+Fetches customer details using their unique customer ID.
+
+**Access**:
+- Available to both **admin** and **readonly** users.
+
+---
