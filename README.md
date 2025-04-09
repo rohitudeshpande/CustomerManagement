@@ -45,3 +45,12 @@ Fetches customer details using their unique customer ID.
 - Available to both **admin** and **readonly** users.
 
 ---
+
+### 4. `GET /getCustomers`
+
+Fetches list of all customers.
+
+**Access**:
+- Available to both **admin** and **readonly** users.
+
+---
